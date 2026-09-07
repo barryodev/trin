@@ -18,14 +18,16 @@ export default async function PostsPage() {
   const summaries: PostSummary[] = await Promise.all(
     posts
       .slice()
-      .sort((a, b) => (a.entry.publishedDate < b.entry.publishedDate ? 1 : -1))
+      .sort((a, b) =>
+        (a.entry.publishedDate ?? "") < (b.entry.publishedDate ?? "") ? 1 : -1,
+      )
       .map(async (post) => {
         const content = await post.entry.content();
         return {
           slug: post.slug,
           title: post.entry.title,
           excerpt: post.entry.excerpt,
-          publishedDate: post.entry.publishedDate,
+          publishedDate: post.entry.publishedDate ?? "",
           readingTime: getReadingTime(content),
         };
       })

@@ -46,7 +46,7 @@ export default async function PostPage({ params }: Props) {
           {post.title}
         </h1>
         <p className="text-xs uppercase tracking-wide text-zinc-600">
-          {formatDate(post.publishedDate)} · {readingTime} · {siteConfig.author}
+          {formatDate(post.publishedDate ?? "")} · {readingTime} · {siteConfig.author}
         </p>
       </header>
 
