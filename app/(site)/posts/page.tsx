@@ -30,7 +30,7 @@ export default async function PostsPage() {
           publishedDate: post.entry.publishedDate ?? "",
           readingTime: getReadingTime(content),
         };
-      })
+      }),
   );
 
   return (

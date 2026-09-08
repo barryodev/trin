@@ -12,5 +12,9 @@ export const siteConfig = {
     { href: "/playlists", label: "Playlists" },
   ],
   // Add social links back here later, e.g. { label: "GitHub", href: "...", icon: "github" }
-  social: [] as { label: string; href: string; icon: keyof typeof import("@/components/icons").icons }[],
+  social: [] as {
+    label: string;
+    href: string;
+    icon: keyof typeof import("@/components/icons").icons;
+  }[],
 } as const;

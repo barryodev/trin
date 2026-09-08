@@ -15,7 +15,8 @@ export default function PlaylistsPage() {
           Playlists
         </h1>
         <p className="text-zinc-400">
-          What I&apos;m listening to while I work — mostly instrumental, occasionally not.
+          What I&apos;m listening to while I work — mostly instrumental, occasionally
+          not.
         </p>
       </div>
       <div className="space-y-6">

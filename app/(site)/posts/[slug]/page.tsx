@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { DocumentRenderer } from "@keystatic/core/renderer";
 import { reader } from "@/lib/keystatic";
@@ -51,14 +52,15 @@ export default async function PostPage({ params }: Props) {
       </header>
 
       {post.coverImage && (
-        // eslint-disable-next-line @next/next/no-img-element -- arbitrary
-        // author-uploaded aspect ratios; a plain <img> avoids fighting
-        // next/image's required width/height for a simple personal blog.
-        <img
-          src={post.coverImage}
-          alt=""
-          className="w-full rounded-xl border border-zinc-800 object-cover"
-        />
+        <div className="relative aspect-[16/7] overflow-hidden rounded-xl border border-zinc-800">
+          <Image
+            src={post.coverImage}
+            alt={post.title}
+            fill
+            sizes="(max-width: 768px) 100vw, 768px"
+            className="object-cover"
+          />
+        </div>
       )}
 
       <div className="prose prose-invert prose-post max-w-none">

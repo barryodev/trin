@@ -86,13 +86,13 @@ To wire this up:
 4. **Set environment variables** in your Vercel project (Project →
    Settings → Environment Variables), matching `.env.example`:
 
-   | Variable | Value |
-   | --- | --- |
-   | `KEYSTATIC_GITHUB_OWNER` | your GitHub username or org |
-   | `KEYSTATIC_GITHUB_REPO` | the repo name |
-   | `KEYSTATIC_GITHUB_CLIENT_ID` | from step 2 |
-   | `KEYSTATIC_GITHUB_CLIENT_SECRET` | from step 2 |
-   | `KEYSTATIC_SECRET` | from step 3 |
+   | Variable                         | Value                       |
+   | -------------------------------- | --------------------------- |
+   | `KEYSTATIC_GITHUB_OWNER`         | your GitHub username or org |
+   | `KEYSTATIC_GITHUB_REPO`          | the repo name               |
+   | `KEYSTATIC_GITHUB_CLIENT_ID`     | from step 2                 |
+   | `KEYSTATIC_GITHUB_CLIENT_SECRET` | from step 2                 |
+   | `KEYSTATIC_SECRET`               | from step 3                 |
 
 5. Redeploy. Visiting `/keystatic` in production will now prompt you to
    sign in with GitHub; edits made there are committed directly to the
@@ -124,14 +124,14 @@ Keystatic admin API routes and the (lightweight, cached) blog pages.
 
 ## 7. Customizing
 
-| What | Where |
-| --- | --- |
-| Name, bio, social links, nav | `lib/site-config.ts` |
-| Projects list | `lib/projects.ts` |
-| Playlists | `lib/playlists.ts` (paste the ID from a Spotify share link) |
-| Blog schema (add/remove fields) | `keystatic.config.tsx` |
-| Colors / theme | `app/globals.css` (`@theme` block) + Tailwind's `zinc` scale used throughout |
-| Site chrome (header/footer) | `components/Header.tsx`, `components/Footer.tsx`, `app/(site)/layout.tsx` |
+| What                            | Where                                                                        |
+| ------------------------------- | ---------------------------------------------------------------------------- |
+| Name, bio, social links, nav    | `lib/site-config.ts`                                                         |
+| Projects list                   | `lib/projects.ts`                                                            |
+| Playlists                       | `lib/playlists.ts` (paste the ID from a Spotify share link)                  |
+| Blog schema (add/remove fields) | `keystatic.config.tsx`                                                       |
+| Colors / theme                  | `app/globals.css` (`@theme` block) + Tailwind's `zinc` scale used throughout |
+| Site chrome (header/footer)     | `components/Header.tsx`, `components/Footer.tsx`, `app/(site)/layout.tsx`    |
 
 ## 8. Project structure
 

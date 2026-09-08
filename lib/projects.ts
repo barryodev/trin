@@ -25,8 +25,7 @@ export const projects: Project[] = [
   },
   {
     title: "Project Three",
-    description:
-      "A third example entry — swap these out for your real, current work.",
+    description: "A third example entry — swap these out for your real, current work.",
     href: "https://github.com/yourusername/project-three",
     tags: ["React", "Tailwind CSS"],
   },
