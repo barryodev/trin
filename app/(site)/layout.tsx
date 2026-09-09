@@ -16,6 +16,7 @@ export default function SiteLayout({
         aria-hidden="true"
         width={720}
         height={2912}
+        loading="eager"
         className="pointer-events-none fixed inset-y-0 left-0 z-0 hidden h-full w-40 object-cover object-right opacity-60 lg:block"
       />
       <Image
@@ -24,6 +25,7 @@ export default function SiteLayout({
         aria-hidden="true"
         width={720}
         height={2912}
+        loading="eager"
         className="pointer-events-none fixed inset-y-0 right-0 z-0 hidden h-full w-40 object-cover object-left opacity-60 lg:block"
       />
       <Header />

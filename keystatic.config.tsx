@@ -1,14 +1,15 @@
 import { config, fields, collection } from "@keystatic/core";
 
-const isProd = process.env.NODE_ENV === "production";
+const useGitHubStorage =
+  process.env.VERCEL_ENV === "production" || process.env.KEYSTATIC_STORAGE === "github";
 
 export default config({
-  storage: isProd
+  storage: useGitHubStorage
     ? {
         kind: "github",
         repo: {
-            owner: process.env.NEXT_PUBLIC_KEYSTATIC_GITHUB_OWNER as string,
-            name: process.env.NEXT_PUBLIC_KEYSTATIC_GITHUB_REPO as string,
+          owner: process.env.NEXT_PUBLIC_KEYSTATIC_GITHUB_OWNER as string,
+          name: process.env.NEXT_PUBLIC_KEYSTATIC_GITHUB_REPO as string,
         },
       }
     : { kind: "local" },
