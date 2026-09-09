@@ -5,6 +5,12 @@ const nextConfig: NextConfig = {
   // API access), which is the App Router default for route handlers, so no
   // extra config is needed there. Nothing else about this site is exotic
   // enough to need custom Next.js config beyond the defaults.
+  outputFileTracingIncludes: {
+    "/": ["./content/posts/**/*"],
+    "/posts": ["./content/posts/**/*"],
+    "/posts/*": ["./content/posts/**/*"],
+    "/sitemap.xml": ["./content/posts/**/*"],
+  },
   images: {
     remotePatterns: [],
   },

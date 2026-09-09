@@ -1,14 +1,7 @@
 import { defineConfig, devices } from "@playwright/test";
 
-const keystaticEnv = {
-  KEYSTATIC_STORAGE: "github",
-  NEXT_PUBLIC_KEYSTATIC_GITHUB_OWNER:
-    process.env.NEXT_PUBLIC_KEYSTATIC_GITHUB_OWNER ?? "barryodev",
-  NEXT_PUBLIC_KEYSTATIC_GITHUB_REPO:
-    process.env.NEXT_PUBLIC_KEYSTATIC_GITHUB_REPO ?? "trin",
-  KEYSTATIC_GITHUB_CLIENT_ID: process.env.KEYSTATIC_GITHUB_CLIENT_ID ?? "dummy",
-  KEYSTATIC_GITHUB_CLIENT_SECRET: process.env.KEYSTATIC_GITHUB_CLIENT_SECRET ?? "dummy",
-  KEYSTATIC_SECRET: process.env.KEYSTATIC_SECRET ?? "dummy",
+const previewEnv = {
+  VERCEL_ENV: "preview",
 };
 
 export default defineConfig({
@@ -22,7 +15,7 @@ export default defineConfig({
   },
   webServer: {
     command: "npm run build && npm run start",
-    env: keystaticEnv,
+    env: previewEnv,
     reuseExistingServer: !process.env.CI,
     timeout: 120_000,
     url: "http://127.0.0.1:3000",

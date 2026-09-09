@@ -13,6 +13,9 @@ test("homepage renders the primary navigation and post list", async ({ page }) =
 test("public navigation pages render", async ({ page }) => {
   await page.goto("/posts");
   await expect(page.getByRole("heading", { name: "Posts" })).toBeVisible();
+  await expect(
+    page.getByRole("link", { name: "Quis Nostrud Exercitation Ullamco" }),
+  ).toBeVisible();
 
   await page.getByRole("link", { name: "Projects" }).click();
   await expect(page).toHaveURL(/\/projects$/);
