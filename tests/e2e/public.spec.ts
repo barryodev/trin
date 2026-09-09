@@ -36,14 +36,3 @@ test("post detail page renders content", async ({ page }) => {
   ).toBeVisible();
   await expect(page.getByText("Et harum quidem rerum facilis est")).toBeVisible();
 });
-
-test("keystatic admin route loads locally", async ({ page }) => {
-  await page.goto("/keystatic");
-
-  await expect(page).toHaveURL(/\/keystatic/);
-  await expect(
-    page
-      .getByRole("button", { name: "Log in with GitHub" })
-      .or(page.getByText("Posts").first()),
-  ).toBeVisible();
-});

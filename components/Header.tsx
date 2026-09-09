@@ -5,7 +5,7 @@ import { NavLink } from "@/components/NavLink";
 
 export function Header() {
   return (
-    <header className="sticky top-0 z-10 border-b border-zinc-800/80 bg-zinc-950/80 backdrop-blur">
+    <header className="sticky top-0 z-20 border-b border-zinc-800/80 bg-zinc-950">
       <Container>
         <div className="flex h-16 items-center justify-between">
           <Link href="/" className="text-sm font-semibold tracking-tight text-zinc-100">

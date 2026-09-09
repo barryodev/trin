@@ -17,7 +17,7 @@ export default function SiteLayout({
         width={720}
         height={2912}
         loading="eager"
-        className="pointer-events-none fixed inset-y-0 left-0 z-0 hidden h-full w-40 object-cover object-right opacity-60 lg:block"
+        className="pointer-events-none fixed top-0 left-0 z-0 hidden h-auto w-64 opacity-60 xl:block"
       />
       <Image
         src="/images/ui/right.webp"
@@ -26,7 +26,7 @@ export default function SiteLayout({
         width={720}
         height={2912}
         loading="eager"
-        className="pointer-events-none fixed inset-y-0 right-0 z-0 hidden h-full w-40 object-cover object-left opacity-60 lg:block"
+        className="pointer-events-none fixed top-0 right-0 z-0 hidden h-auto w-64 opacity-60 xl:block"
       />
       <Header />
       <main className="relative z-10 flex-1 pt-6 pb-12 sm:pt-8 sm:pb-16">
