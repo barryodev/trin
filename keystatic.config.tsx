@@ -7,8 +7,8 @@ export default config({
     ? {
         kind: "github",
         repo: {
-            owner: process.env.NEXT_PUBLIC_KEYSTATIC_GITHUB_OWNER as string,
-            name: process.env.NEXT_PUBLIC_KEYSTATIC_GITHUB_REPO as string,
+          owner: process.env.NEXT_PUBLIC_KEYSTATIC_GITHUB_OWNER as string,
+          name: process.env.NEXT_PUBLIC_KEYSTATIC_GITHUB_REPO as string,
         },
       }
     : { kind: "local" },
