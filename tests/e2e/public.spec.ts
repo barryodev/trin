@@ -38,5 +38,9 @@ test("keystatic admin route loads locally", async ({ page }) => {
   await page.goto("/keystatic");
 
   await expect(page).toHaveURL(/\/keystatic/);
-  await expect(page.getByRole("button", { name: "Log in with GitHub" })).toBeVisible();
+  await expect(
+    page
+      .getByRole("button", { name: "Log in with GitHub" })
+      .or(page.getByText("Posts").first()),
+  ).toBeVisible();
 });

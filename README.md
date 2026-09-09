@@ -64,11 +64,13 @@ empty on first run — edit or delete them from the admin UI.
 
 ## 5. Keystatic in production (GitHub storage)
 
-In production (`NODE_ENV=production`, which Vercel sets automatically),
+On Vercel production deployments (`VERCEL_ENV=production`),
 `keystatic.config.tsx` switches to **GitHub storage**: the admin UI reads
 and writes posts by committing to a GitHub repo through the GitHub API,
 instead of touching a local filesystem (which doesn't persist on
-Vercel's serverless functions anyway).
+Vercel's serverless functions anyway). Local development and Vercel Preview
+Deployments use local storage, so preview builds do not need Keystatic's
+GitHub OAuth secrets.
 
 To wire this up:
 

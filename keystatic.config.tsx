@@ -1,9 +1,10 @@
 import { config, fields, collection } from "@keystatic/core";
 
-const isProd = process.env.NODE_ENV === "production";
+const useGitHubStorage =
+  process.env.VERCEL_ENV === "production" || process.env.KEYSTATIC_STORAGE === "github";
 
 export default config({
-  storage: isProd
+  storage: useGitHubStorage
     ? {
         kind: "github",
         repo: {

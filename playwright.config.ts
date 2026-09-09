@@ -1,6 +1,7 @@
 import { defineConfig, devices } from "@playwright/test";
 
 const keystaticEnv = {
+  KEYSTATIC_STORAGE: "github",
   NEXT_PUBLIC_KEYSTATIC_GITHUB_OWNER:
     process.env.NEXT_PUBLIC_KEYSTATIC_GITHUB_OWNER ?? "barryodev",
   NEXT_PUBLIC_KEYSTATIC_GITHUB_REPO:
