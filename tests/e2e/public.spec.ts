@@ -10,7 +10,7 @@ test("homepage renders the primary navigation", async ({ page }) => {
 test("public navigation pages render", async ({ page }) => {
   await page.goto("/posts");
   await expect(page.getByRole("heading", { name: "Posts" })).toBeVisible();
-  await expect(page.getByText("No posts yet")).toBeVisible();
+  await expect(page.getByRole("link", { name: "Learning To Vibe" })).toBeVisible();
 
   await page.getByRole("link", { name: "Projects" }).click();
   await expect(page).toHaveURL(/\/projects$/);
