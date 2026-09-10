@@ -1,24 +1,10 @@
 import type { Project } from "@/lib/projects";
+import { GithubIcon } from "@/components/icons";
 
 export function ProjectCard({ project }: { project: Project }) {
   return (
-    <a
-      href={project.href}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="group block rounded-xl border border-zinc-800 bg-zinc-900 p-5 transition-colors hover:border-zinc-700 hover:bg-zinc-800/60"
-    >
-      <div className="flex items-start justify-between gap-4">
-        <h3 className="font-medium text-zinc-100 group-hover:text-white">
-          {project.title}
-        </h3>
-        <span
-          aria-hidden
-          className="mt-0.5 shrink-0 text-zinc-600 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-zinc-400"
-        >
-          ↗
-        </span>
-      </div>
+    <div className="rounded-xl border border-zinc-800 bg-zinc-900 p-5 transition-colors hover:border-zinc-700 hover:bg-zinc-800/60">
+      <h3 className="font-medium text-zinc-100">{project.title}</h3>
       <p className="mt-2 text-sm leading-relaxed text-zinc-400">
         {project.description}
       </p>
@@ -34,6 +20,28 @@ export function ProjectCard({ project }: { project: Project }) {
           ))}
         </ul>
       )}
-    </a>
+      <div className="mt-4 flex items-center gap-4 text-sm">
+        <a
+          href={project.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-1.5 text-zinc-400 hover:text-zinc-100"
+        >
+          <GithubIcon width={16} height={16} />
+          Source
+        </a>
+        {project.demoHref && (
+          <a
+            href={project.demoHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 text-zinc-400 hover:text-zinc-100"
+          >
+            Live demo
+            <span aria-hidden>↗</span>
+          </a>
+        )}
+      </div>
+    </div>
   );
 }
