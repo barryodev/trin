@@ -1,0 +1,47 @@
+---
+title: Learning To Vibe
+publishedDate: 2026-09-10
+excerpt: >-
+  Two weeks ago I decided to flip my attitude towards coding with AI, here's
+  what I learned after burning through half a month's worth of copilot pro+
+  credits.
+---
+"Sevro, you say the fortresses cannot be taken? Well, the Proctors have to know that. So that means we have to change the paradigm. We need an alliance."
+
+> —[ Pierce Brown, Red Rising](https://www.goodreads.com/author/show/6474348.Pierce_Brown)
+
+I'm a developer with plenty of years under my belt, and like many I've recently found myself out of work. It hasn't been as easy to find the next spot as it has in the past, and over the last couple of months I was starting to wonder if the music had stopped and I was left without a seat. Up until now, I had treated AIs as basically an improved search engine, find me an obscure piece of documentation I can't find, or give me the stack overflow answers that best deal with this error message, sorted by how recent and how useful. The odd time I would use it fill out the rest of unit tests for a function, after I'd covered the most complicated path myself, and defined the other edge cases I wanted tested. I never trusted it to write more than three or four lines of code, as I found it often produced a style of code I wasn't familiar with and didn't feel comfortable standing over with my name on a commit.
+
+A couple of weeks ago, I was catching up with a friend and fellow developer who has been a real advocate for AI and using it for coding, both in their work and personal projects. We had a great chat covering all sorts, but in particular, how productive they were finding themselves, since they'd jumped in with both feet. On the drive home, I was having a chat with myself in the car and the book Red Rising popped into my head. It's a Sci-Fi book set in the distant future, where Rome never fell, and humanity has filled the solar system. A unified solar society exists within a strict caste system, where your future is defined by what caste you were born into. The protagonist of this story, Durrow, decides to reject this rigid thinking, and this allows him to break out of this restrictive frame of mind and to "change the paradigm".
+
+Basically if you find yourself in an impossible situation, you need to step back, forget any assumptions or certainties you have, and attack from a completely different angle. It's one of the most convincing ways I've seen a story teller rationalise the usual main character plot armour where everything tends to go their way. Durrow has broken out of the rigid thinking that controls everyone else. Again and again this allows them to outmanoeuvre, outplay his opponents. (Well maybe Ender Wiggin's genius-tier spatial reasoning just about pips it).
+
+I came to the realisation that I'd fallen into a similar state of rigid thinking when it came to using AI as a programming tool. I saw vibe coding as another industry fad like cryptocurrency and NFTs that would blow over, but perhaps leave us with some useful tooling. If I stuck to this way of thinking, I was going to allow myself to be outmanoeuvred and outplayed, so there and then I decided to change the paradigm. Not out of any great love for AI for the sake of it, or even belief in it, but to find out for myself what vibe coding is actually like and if it's something I'd enjoy doing every day for work.
+
+As my first goal, I decided to install Ubuntu as a dual boot on my home computer. Something I've done many times and a good way to get the toes wet. I used Gemini pro as a guide, and all went well with the usual steps of using rufus to make an USB install key, testing it in live mode and then creating an encrypted partition to host the Ubuntu install. I hit a major snag when it came to the dual boot sequence configuration. I wanted to boot into windows by default with minimum delay and to only take a couple of keystrokes to get into linux. The idea being, windows is where I relax, so I can just hit the power button to get there, and linux is where I work so I'll be actively sitting in front of the computer tapping a key to get down to work.
+
+Up until this point everything had been going well and I was extremely positive and confident in what Gemini was dishing out, only for it all to go tits up on the boot sequence config. From how I was describing the situation, Gemini was certain it was a GRUB config issue, so I went down a rabbit hole of applying increasingly more complex changes to my Ubuntu and GRUB config, and then reverting those changes when they didn't work. Eventually I took a step back, started asking Gemini different types of questions:
+
+- Are you certain this is the right solution?&nbsp;
+- How can I verify that your suggested solution matches the actual physical real world solution.&nbsp;
+
+It turns out the real problem was at the BIOS/UEFI boot priority, and the slightly obscure MSI bios config that I'd missed earlier in the day. This taught me two things, Gemini was extremely good at solving problems, and it was my responsibility to make sure it was solving the correct problems. So the next thing I wanted to find out was if this would hold true when it came to using copilot to vibe code. I came up with the idea of making a [word cloud of hello worlds](https://panacea.barryodev.io), in different languages, with fonts that were linked to the culture in some way.
+
+![](/images/posts/learning-to-vibe/Screenshot%20From%202026-09-10%2016-27-47.png)
+
+I used Claude to bootstrap a basic project structure, using Next.js, typescript and AWS amplify as the host target, and after that, to build this personal page to host my portfolio and blog.
+
+Over the course of developing both these projects, I started to apply the following rule set:
+
+- Keep commits small, with focused per feature branches.
+- Take the time to break each task down to smaller steps, come up with a plan, and then follow it in order.
+- Heavy unit testing on any pure independent logic within the app, integration tests on the framework code and logic to avoid heavy mocking or stubbing
+- Install lint and prettier
+- Personally review each line in a branch merge, question copilot on any code I didn't understand, or discuss any code smells I noticed, (the word cloud logic at one point was a for loop wrapping two while loops that only had a single difference between them.
+- Implement a ci/cd pipeline that runs the unit and integration tests as well as deploying pull requests to a preview environment
+- Stay in the VSCode copilot chat pane as much as possible, don't jump out to stack overflow if I have a question on something, as this context switching can be distracting.
+- Repeatedly ask the AI to doubt itself, and review its actions, and to do the same for my inputs.
+
+In the last week I successfully implemented and hosted both these projects, and that rule set has evolved over the time as I ran down blind alleys or went in the wrong direction. The biggest change in my perspective of interacting with an LLM was to re-frame, when I got a response that didn't match my expectation, wasn't to blame the AI's performance, but to look at my own input for the mistake. Essentially this was how I figured out how to build user interfaces, if a user of one of my systems wasn't able to find a button, (even though it's right there!), the error wasn't on the user's ability to find the button, the problem was with my interface design. This change in paradigm completely flipped my previous frustrations with using AI to now, to just another new skill I need to develop and hone to keep up with the break neck speed of our industry.
+
+I'm excited about picking the next project to work on and discuss here, along with immersing myself into the culture of coding with AI. I'm going to look for developer blogs that cover a similar experience, as well as experimenting with different models and tool sets. While I for sure miss the joy of getting lost in code for hours and knowing every tiny aspect of a system I built and delivered. I have to acknowledge, I've never produced code at this rate, with this level of system complexity. I'd probably say something corny like it's a brave new world, but I still think it's a bit early for that.
