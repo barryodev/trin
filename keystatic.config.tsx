@@ -1,7 +1,9 @@
 import { config, fields, collection } from "@keystatic/core";
 
-const useGitHubStorage =
-  process.env.VERCEL_ENV === "production" || process.env.KEYSTATIC_STORAGE === "github";
+// Must be NEXT_PUBLIC_-prefixed: this file is imported by both server and
+// client code, and server-only env vars (e.g. VERCEL_ENV) resolve to
+// undefined in the browser bundle, causing client/server storage mismatches.
+const useGitHubStorage = process.env.NEXT_PUBLIC_KEYSTATIC_STORAGE === "github";
 
 export default config({
   storage: useGitHubStorage

@@ -39,7 +39,9 @@ Playwright runs against a built app. Its config supplies dummy Keystatic credent
 
 ## Keystatic Production Setup
 
-On Vercel production deployments (`VERCEL_ENV=production`), Keystatic uses GitHub storage. Local development and Vercel Preview deployments use local storage, so preview builds do not need Keystatic OAuth secrets.
+Keystatic's storage mode is controlled by `NEXT_PUBLIC_KEYSTATIC_STORAGE`. Set it to `github` in Vercel Production only, and leave it unset everywhere else (local dev, Vercel Preview) so those default to local storage and don't need Keystatic OAuth secrets.
+
+This must be a `NEXT_PUBLIC_`-prefixed variable: `keystatic.config.tsx` is imported by both server and client code, and Next.js strips non-`NEXT_PUBLIC_` env vars from the browser bundle. Using a server-only variable here (e.g. `VERCEL_ENV`) causes the client to resolve a different storage mode than the server, which breaks the admin UI with a `/api/keystatic/tree 404` error.
 
 Create a GitHub OAuth App with:
 
@@ -50,6 +52,7 @@ Set these variables in Vercel Production:
 
 | Variable                             | Value                      |
 | ------------------------------------ | -------------------------- |
+| `NEXT_PUBLIC_KEYSTATIC_STORAGE`      | `github`                   |
 | `NEXT_PUBLIC_KEYSTATIC_GITHUB_OWNER` | GitHub username or org     |
 | `NEXT_PUBLIC_KEYSTATIC_GITHUB_REPO`  | GitHub repo name           |
 | `KEYSTATIC_GITHUB_CLIENT_ID`         | GitHub OAuth App client ID |
