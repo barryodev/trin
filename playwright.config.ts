@@ -1,9 +1,5 @@
 import { defineConfig, devices } from "@playwright/test";
 
-const previewEnv = {
-  VERCEL_ENV: "preview",
-};
-
 export default defineConfig({
   testDir: "./tests/e2e",
   fullyParallel: true,
@@ -15,7 +11,6 @@ export default defineConfig({
   },
   webServer: {
     command: "npm run build && npm run start",
-    env: previewEnv,
     reuseExistingServer: !process.env.CI,
     timeout: 120_000,
     url: "http://127.0.0.1:3000",
