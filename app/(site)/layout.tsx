@@ -17,7 +17,7 @@ export default function SiteLayout({
         width={720}
         height={2912}
         loading="eager"
-        className="pointer-events-none fixed inset-y-0 left-0 z-0 hidden h-full w-40 object-cover object-right opacity-60 lg:block"
+        className="pointer-events-none fixed top-0 left-[max(0px,calc(50%-46rem))] z-0 hidden h-auto w-64 opacity-50 xl:block"
       />
       <Image
         src="/images/ui/right.webp"
@@ -26,7 +26,16 @@ export default function SiteLayout({
         width={720}
         height={2912}
         loading="eager"
-        className="pointer-events-none fixed inset-y-0 right-0 z-0 hidden h-full w-40 object-cover object-left opacity-60 lg:block"
+        className="pointer-events-none fixed top-0 right-[max(0px,calc(50%-46rem))] z-0 hidden h-auto w-64 opacity-50 xl:block"
+      />
+      <Image
+        src="/images/ui/mobile-bg.webp"
+        alt=""
+        aria-hidden="true"
+        width={1440}
+        height={2912}
+        loading="eager"
+        className="pointer-events-none fixed top-[-12rem] left-1/2 z-0 h-auto w-[42rem] max-w-none -translate-x-1/2 opacity-15 sm:top-[-18rem] sm:w-[42rem] sm:opacity-10 xl:hidden"
       />
       <Header />
       <main className="relative z-10 flex-1 pt-6 pb-12 sm:pt-8 sm:pb-16">

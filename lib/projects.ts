@@ -2,6 +2,7 @@ export type Project = {
   title: string;
   description: string;
   href: string;
+  demoHref?: string;
   tags?: string[];
 };
 
@@ -10,23 +11,17 @@ export type Project = {
 // up another Keystatic collection.
 export const projects: Project[] = [
   {
-    title: "Project One",
-    description:
-      "A short, concrete description of what this project does and why you built it — one or two sentences is plenty.",
-    href: "https://github.com/yourusername/project-one",
+    title: "Trin",
+    description: "The site you're looking at right now.",
+    href: "https://github.com/barryodev/trin",
+    demoHref: "https://www.barryodev.io",
     tags: ["Next.js", "TypeScript"],
   },
   {
-    title: "Project Two",
-    description:
-      "Another project. Keep the description focused on the problem it solves rather than the tech stack.",
-    href: "https://github.com/yourusername/project-two",
-    tags: ["Node.js", "PostgreSQL"],
-  },
-  {
-    title: "Project Three",
-    description: "A third example entry — swap these out for your real, current work.",
-    href: "https://github.com/yourusername/project-three",
-    tags: ["React", "Tailwind CSS"],
+    title: "Panacea",
+    description: "The most over the top helloworld I could imagine",
+    href: "https://github.com/barryodev/panacea",
+    demoHref: "https://panacea.barryodev.io",
+    tags: ["Next.js", "TypeScript"],
   },
 ];

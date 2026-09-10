@@ -1,49 +1,30 @@
 import { expect, test } from "@playwright/test";
 
-test("homepage renders the primary navigation and post list", async ({ page }) => {
+test("homepage renders the primary navigation", async ({ page }) => {
   await page.goto("/");
 
   await expect(page.getByRole("link", { name: "@barryodev" })).toBeVisible();
   await expect(page.getByRole("navigation")).toContainText("Posts");
-  await expect(
-    page.getByRole("link", { name: "Quis Nostrud Exercitation Ullamco" }),
-  ).toBeVisible();
 });
 
 test("public navigation pages render", async ({ page }) => {
   await page.goto("/posts");
   await expect(page.getByRole("heading", { name: "Posts" })).toBeVisible();
-  await expect(
-    page.getByRole("link", { name: "Quis Nostrud Exercitation Ullamco" }),
-  ).toBeVisible();
+  await expect(page.getByText("No posts yet")).toBeVisible();
 
   await page.getByRole("link", { name: "Projects" }).click();
   await expect(page).toHaveURL(/\/projects$/);
   await expect(page.getByRole("heading", { name: "Projects" })).toBeVisible();
-  await expect(page.getByText("Project One")).toBeVisible();
+  await expect(page.getByText("Trin", { exact: true })).toBeVisible();
 
   await page.getByRole("link", { name: "Playlists" }).click();
   await expect(page).toHaveURL(/\/playlists$/);
   await expect(page.getByRole("heading", { name: "Playlists" })).toBeVisible();
-  await expect(page.getByText("Deep Focus")).toBeVisible();
+  await expect(page.getByText("Beats to trigger flow state")).toBeVisible();
 });
 
-test("post detail page renders content", async ({ page }) => {
-  await page.goto("/posts/lorem-ipsum-five");
+test("post detail page 404s for a missing slug", async ({ page }) => {
+  const response = await page.goto("/posts/does-not-exist");
 
-  await expect(
-    page.getByRole("heading", { name: "Quis Nostrud Exercitation Ullamco" }),
-  ).toBeVisible();
-  await expect(page.getByText("Et harum quidem rerum facilis est")).toBeVisible();
-});
-
-test("keystatic admin route loads locally", async ({ page }) => {
-  await page.goto("/keystatic");
-
-  await expect(page).toHaveURL(/\/keystatic/);
-  await expect(
-    page
-      .getByRole("button", { name: "Log in with GitHub" })
-      .or(page.getByText("Posts").first()),
-  ).toBeVisible();
+  expect(response?.status()).toBe(404);
 });

@@ -1,15 +1,11 @@
-import { siteConfig } from "@/lib/site-config";
 import { Container } from "@/components/Container";
 
 export function Footer() {
   return (
-    <footer className="mt-24 border-t border-zinc-800/80">
+    <footer className="relative z-10 mt-16 pb-8">
       <Container>
-        <div className="flex flex-col items-center justify-between gap-2 py-8 text-xs text-zinc-500 sm:flex-row">
-          <p>
-            &copy; {new Date().getFullYear()} {siteConfig.name}. Built with Next.js
-            &amp; Tailwind CSS.
-          </p>
+        <div className="flex items-center justify-center border-t border-zinc-800/80 pt-8 text-xs text-zinc-500">
+          <p>All rights reserved. Mostly because nobody else wants them.</p>
         </div>
       </Container>
     </footer>
