@@ -96,5 +96,4 @@ Open a pull request, review the Vercel preview, wait for GitHub Actions, then me
 
 ## Technical Debt
 
-- Keystatic production auth currently uses a GitHub OAuth App plus a narrow redirect wrapper in `app/api/keystatic/[...params]/route.ts` to request `scope=public_repo`. This works, but Keystatic's current docs prefer the GitHub App setup. Migrate to the documented GitHub App flow later and remove the redirect wrapper after verifying writes.
-- Add proper access protection in front of `/keystatic` so unauthenticated visitors cannot load the admin UI in production.
+Tracked in [TODO.md](TODO.md).
