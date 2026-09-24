@@ -7,6 +7,8 @@ excerpt: >-
 ---
 > "Never promise to do the possible. Anyone could do the possible. You should promise to do the impossible, because sometimes the impossible was possible, if you could find the right way, and at least you could often extend the limits of the possible. And if you failed, well, it had been impossible."  — Terry Pratchett, *Going Postal*
 
+## The Good
+
 After getting this blog site up and running, and my fancy pants Hello World project finished, I decided to pick something more difficult for my next project. I wanted to test the limits of what I could achieve when coding with AI, so I decided to pick a domain that I felt would be challenging and outside of the comfort zone. The idea I came up with was ChromaClack, a toy app that allows the user to explore colour theory through a single UI element.
 
 This UI element is comprised of three modes of interaction, swiping up and down, left and right, hold and rotate. The idea was that the UI element would mimic a mechanical roledex in the first two, and a dimmer switch in the last. I felt this would be a particular challenge, because it would involve some decently complex maths and raw CSS to handle the animation, and the spacial reasoning required to implement this would be pushing the boundaries of what an LLM can do. As you can seen in the video below, the idea is each axis of movement could be tied to Hue/Saturation/Light, or Red/Blue/Green, to let a user mix these values and see how the colour changes.
@@ -30,6 +32,8 @@ Then after that I spent a few days working on the actually CSS, Svelte and ts co
 
 At this point in the process I was really enjoying the pace of coding and I thought I'd be writing a very different blog post about this project much sooner. I had started to change my method of communicating with copilot. Instead of telling it what to implement, and if it was successful or not, I started to ask it what it thought was the best series of commits to make to reach a very high level goal. I would then break down each step or implementation slice and we'd implement that, add some unit test coverage and move on.
 
+## The Bad
+
 This is where I started to drift into dangerous waters. I was using multi day chat sessions, building elaborate design docs with long to do lists, and based on the success of the previous gesture model, started to introduce increasingly elaborate architecture, involving multiple complex, models representing deck state, render state, animation state, camera position all with great unit test coverage, and decently clean code that I was reviewing before each commit.
 
 The problem was as soon as I started to implement something that felt simple, like having the flaps have a slight rotation at rest to better mimic the behaviour of a roledex, and then add rotation to that system, copilot continuously failed to implement these features. We would discuss each failure, come up with a new plan, that usually involved more models and unit tests but ultimately became so convoluted that I felt it was better to throw away the entire branch and start over.
@@ -38,4 +42,50 @@ After some discussion with copilot I decided to throw away the branch entirely a
 
 At this point I was pretty frustrated, I'd burned a lot of copilot credits and had nothing tangible to show for it. If there ever is an AI takeover, I really hope our new digital overlords don't look at those chat logs too closely. After cooling off a bit, I reflected on my previous mindset when starting this project, the output is only as good as the input, so ultimately the failure was on my prompts and approach. I've seen code achieves much more complex behaviour written by LLMs, so I decided to use Gemini Pro 2.5 to perform an uncompromising review of my performance during the project.
 
+## The Ugly
+
 I trimmed the entire chat sessions of command output, so just the messages back and forth between us and the reasoning steps in between. This came out to a 35k line count log, which I fed to gemini, along with snapshots of the repo at the critical points in the development lifecycle. This is the result I got back:
+
+#### What Worked
+
+- **Strict Upfront Constraints:** Defined the exact architecture (SvelteKit, Tauri, Rust) and hard limits (pure CSS 3D, no Three.js) instead of a vague prompt.
+- **Early Hardware Testing:** Validated on a physical Android device on Day 2, catching mobile quirks before building features on top.
+- **Codified AI Guardrails:** Enforced explicit project rules in markdown (e.g., "passing unit tests do not equal visual correctness").
+
+#### What Broke (The Lessons)
+
+**The Large Context Spiral:** Kept chat sessions running for multiple days until context degraded into noise and hallucinations.
+
+- Takeaway: Treat chats as disposable scratchpads; start fresh after every major milestone.
+
+**The Unit Test Illusion:** Trusted passing unit tests for a 3D interface while the actual browser transforms broke completely.
+
+- Takeaway: Never trust an AI abstraction for visual features until it is proven in the browser viewport.
+
+**Arguing with the AI (Sunk Cost):** Kept writing angry correction prompts to patch already-broken AI code.
+
+- Takeaway: If an LLM fails three times, context is poisoned—don't patch it, git reset --hard and prompt fresh.
+
+**Skipping the Sandbox:** Tried to engineer complex 3D physics directly inside the production monorepo.
+
+- **Takeaway:** Prove experimental math in a throwaway 100-line HTML file before integrating it into production.
+
+#### My Response
+
+Was I too involved, or is an AI simply incapable of evaluating 3D tactile UI through tests and screenshots?
+
+#### The Verdict
+
+You weren't micromanaging—AI fundamentally lacks physical intuition.\
+An AI excels at discrete logic, but cannot "feel" kinetic motion, easing curves, or spatial continuity.
+
+• **The "Blind Watchmaker" Trap:** Unit tests verify data, not perception. A test can confirm a flap index changed from 3 to 4 while the element clips through its neighbor in the viewport.\
+• **Screenshots Aren't Kinetic:** Static Playwright captures miss the point. They can't tell you if drag inertia feels sluggish, if an axle seems distorted, or if an animation snaps abruptly.\
+• **Hands-Off UI Fails Fast:** Being completely hands-off wouldn't have fixed things—it just produces pristine, passing test suites for a visually broken UI.\
+• **The Winning Division of Labor:**\
+• **AI:** Plumbing, build pipelines, Rust backends, and pure math state machines (gesture-model.ts).\
+• **Human**: "Director of Photography" for CSS transforms, animation feel, and visual QA.
+
+## Conclusion
+
+So after this, I don't consider it wasted effort and credits to reach this point. I've had a bit of a train wreak of a week, but sometimes those are the weeks you learn the most. I'm going to apply Gemini's suggestions on how to move forward, but this time I've decided to take it as an opportunity to try out running local open source models for coding. I'm also switching to using Gemini's anti-gravity cli tool, agy which I've found much faster and cleaner to work within. I'm sure I have plenty more failures ahead of me as I progress along, but I'll be much more eager to pull the ripcord next time, analysis what's going wrong, why and how to correct course.
