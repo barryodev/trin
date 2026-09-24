@@ -5,7 +5,7 @@ excerpt: >-
   A retrospective on two weeks of failed effort in trying to implement a multi
   axis input element, that would allow a user to explore colour theory.
 ---
-> "Never promise to do the possible. Anyone could do the possible. You should promise to do the impossible, because sometimes the impossible was possible, if you could find the right way, and at least you could often extend the limits of the possible. And if you failed, well, it had been impossible."  — Terry Pratchett, *Going Postal*
+> Never promise to do the possible. Anyone could do the possible. You should promise to do the impossible, because sometimes the impossible was possible, if you could find the right way, and at least you could often extend the limits of the possible. And if you failed, well, it had been impossible. — Terry Pratchett, *Going Postal*
 
 ## The Good
 
@@ -46,17 +46,17 @@ At this point I was pretty frustrated, I'd burned a lot of copilot credits and h
 
 I trimmed the entire chat sessions of command output, so just the messages back and forth between us and the reasoning steps in between. This came out to a 35k line count log, which I fed to gemini, along with snapshots of the repo at the critical points in the development lifecycle. This is the result I got back:
 
-#### What Worked
+### What Worked
 
 - **Strict Upfront Constraints:** Defined the exact architecture (SvelteKit, Tauri, Rust) and hard limits (pure CSS 3D, no Three.js) instead of a vague prompt.
 - **Early Hardware Testing:** Validated on a physical Android device on Day 2, catching mobile quirks before building features on top.
 - **Codified AI Guardrails:** Enforced explicit project rules in markdown (e.g., "passing unit tests do not equal visual correctness").
 
-#### What Broke (The Lessons)
+### What Broke (The Lessons)
 
 **The Large Context Spiral:** Kept chat sessions running for multiple days until context degraded into noise and hallucinations.
 
-- Takeaway: Treat chats as disposable scratchpads; start fresh after every major milestone.
+- **Takeaway:** Treat chats as disposable scratchpads; start fresh after every major milestone.
 
 **The Unit Test Illusion:** Trusted passing unit tests for a 3D interface while the actual browser transforms broke completely.
 
@@ -70,11 +70,11 @@ I trimmed the entire chat sessions of command output, so just the messages back 
 
 - **Takeaway:** Prove experimental math in a throwaway 100-line HTML file before integrating it into production.
 
-#### My Response
+### My Response
 
 Was I too involved, or is an AI simply incapable of evaluating 3D tactile UI through tests and screenshots?
 
-#### The Verdict
+### The Verdict
 
 You weren't micromanaging—AI fundamentally lacks physical intuition.\
 An AI excels at discrete logic, but cannot "feel" kinetic motion, easing curves, or spatial continuity.
@@ -88,4 +88,4 @@ An AI excels at discrete logic, but cannot "feel" kinetic motion, easing curves,
 
 ## Conclusion
 
-So after this, I don't consider it wasted effort and credits to reach this point. I've had a bit of a train wreak of a week, but sometimes those are the weeks you learn the most. I'm going to apply Gemini's suggestions on how to move forward, but this time I've decided to take it as an opportunity to try out running local open source models for coding. I'm also switching to using Gemini's anti-gravity cli tool, agy which I've found much faster and cleaner to work within. I'm sure I have plenty more failures ahead of me as I progress along, but I'll be much more eager to pull the ripcord next time, analysis what's going wrong, why and how to correct course.
+The irony of trusting an LLMs meta analysis on the failure of working with an LLM is not lost on me, but I think it's another limit test on their capabilities, so after this, I don't consider it wasted effort and credits to reach this point. I've had a bit of a train wreak of a week, but sometimes those are the weeks you learn the most. I'm going to apply Gemini's suggestions on how to move forward, but this time I've decided to take it as an opportunity to try out running local open source models for coding. I'm also switching to using Gemini's anti-gravity cli tool, agy which I've found much faster and cleaner to work within. I'm sure I have plenty more failures ahead of me as I progress along, but I'll be much more eager to pull the ripcord next time, analysis what's going wrong, why and how to correct course.
