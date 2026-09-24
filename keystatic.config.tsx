@@ -64,18 +64,20 @@ export default config({
                 const src = props.fields.src.value;
                 const autoPlay = props.fields.autoPlay.value;
                 let url: string | undefined = undefined;
-                if (typeof src === 'string') {
+                if (typeof src === "string") {
                   url = src;
-                } else if (src && typeof src === 'object' && 'data' in src) {
-                  // @ts-ignore - TS thinks data might be SharedArrayBuffer
+                } else if (src && typeof src === "object" && "data" in src) {
+                  // @ts-expect-error - TS thinks data might be SharedArrayBuffer
                   url = URL.createObjectURL(new Blob([src.data]));
                 }
                 const width = props.fields.width?.value || "100%";
-                
+
                 return url ? (
-                  <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
-                    <video 
-                      src={url} 
+                  <div
+                    style={{ display: "flex", justifyContent: "center", width: "100%" }}
+                  >
+                    <video
+                      src={url}
                       controls={!autoPlay}
                       autoPlay={autoPlay}
                       loop={autoPlay}
@@ -85,7 +87,13 @@ export default config({
                     />
                   </div>
                 ) : (
-                  <div style={{ padding: '1rem', border: '1px dashed #ccc', textAlign: 'center' }}>
+                  <div
+                    style={{
+                      padding: "1rem",
+                      border: "1px dashed #ccc",
+                      textAlign: "center",
+                    }}
+                  >
                     No video selected
                   </div>
                 );
@@ -104,7 +112,8 @@ export default config({
                 }),
                 width: fields.text({
                   label: "Width",
-                  description: "CSS width (e.g., '100%', '400px', 'max-content'). Defaults to 100%.",
+                  description:
+                    "CSS width (e.g., '100%', '400px', 'max-content'). Defaults to 100%.",
                   defaultValue: "100%",
                 }),
               },
