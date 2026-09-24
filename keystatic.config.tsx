@@ -1,4 +1,4 @@
-import { config, fields, collection } from "@keystatic/core";
+import { config, fields, collection, component } from "@keystatic/core";
 
 // Must be NEXT_PUBLIC_-prefixed: this file is imported by both server and
 // client code, and server-only env vars (e.g. VERCEL_ENV) resolve to
@@ -57,6 +57,58 @@ export default config({
           images: {
             directory: "public/images/posts",
             publicPath: "/images/posts/",
+          },
+          componentBlocks: {
+            video: component({
+              preview: (props) => {
+                const src = props.fields.src.value;
+                const autoPlay = props.fields.autoPlay.value;
+                let url: string | undefined = undefined;
+                if (typeof src === 'string') {
+                  url = src;
+                } else if (src && typeof src === 'object' && 'data' in src) {
+                  // @ts-ignore - TS thinks data might be SharedArrayBuffer
+                  url = URL.createObjectURL(new Blob([src.data]));
+                }
+                const width = props.fields.width?.value || "100%";
+                
+                return url ? (
+                  <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
+                    <video 
+                      src={url} 
+                      controls={!autoPlay}
+                      autoPlay={autoPlay}
+                      loop={autoPlay}
+                      muted={autoPlay}
+                      playsInline={autoPlay}
+                      style={{ width, maxWidth: "100%", borderRadius: "0.5rem" }}
+                    />
+                  </div>
+                ) : (
+                  <div style={{ padding: '1rem', border: '1px dashed #ccc', textAlign: 'center' }}>
+                    No video selected
+                  </div>
+                );
+              },
+              label: "Video",
+              schema: {
+                src: fields.file({
+                  label: "Video File (mp4)",
+                  description: "Upload an mp4 video file",
+                  directory: "public/videos/posts",
+                  publicPath: "/videos/posts/",
+                }),
+                autoPlay: fields.checkbox({
+                  label: "Autoplay (looping, muted clip)",
+                  defaultValue: true,
+                }),
+                width: fields.text({
+                  label: "Width",
+                  description: "CSS width (e.g., '100%', '400px', 'max-content'). Defaults to 100%.",
+                  defaultValue: "100%",
+                }),
+              },
+            }),
           },
         }),
       },

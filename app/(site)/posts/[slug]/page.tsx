@@ -65,7 +65,28 @@ export default async function PostPage({ params }: Props) {
       )}
 
       <div className="prose prose-invert prose-post max-w-none">
-        <DocumentRenderer document={content} />
+        <DocumentRenderer
+          document={content}
+          componentBlocks={{
+            video: (props) => {
+              const width = props.width || "100%";
+              return (
+                <div className="flex w-full justify-center my-8">
+                  <video 
+                    src={props.src} 
+                    controls={!props.autoPlay}
+                    autoPlay={!!props.autoPlay}
+                    loop={!!props.autoPlay}
+                    muted={!!props.autoPlay}
+                    playsInline={!!props.autoPlay}
+                    className="rounded-lg border border-zinc-800"
+                    style={{ width, maxWidth: "100%" }}
+                  />
+                </div>
+              );
+            },
+          }}
+        />
       </div>
     </article>
   );
