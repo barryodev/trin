@@ -54,21 +54,21 @@ I trimmed the entire chat sessions of command output, so just the messages back 
 
 ### What Broke (The Lessons)
 
-**The Large Context Spiral:** Kept chat sessions running for multiple days until context degraded into noise and hallucinations.
+- **The Large Context Spiral:** Kept chat sessions running for multiple days until context degraded into noise and hallucinations.
 
-- **Takeaway:** Treat chats as disposable scratchpads; start fresh after every major milestone.
+**Takeaway:** Treat chats as disposable scratchpads; start fresh after every major milestone.
 
-**The Unit Test Illusion:** Trusted passing unit tests for a 3D interface while the actual browser transforms broke completely.
+- **The Unit Test Illusion:** Trusted passing unit tests for a 3D interface while the actual browser transforms broke completely.
 
-- Takeaway: Never trust an AI abstraction for visual features until it is proven in the browser viewport.
+**Takeaway:** Never trust an AI abstraction for visual features until it is proven in the browser viewport.
 
-**Arguing with the AI (Sunk Cost):** Kept writing angry correction prompts to patch already-broken AI code.
+- **Arguing with the AI (Sunk Cost):** Kept writing angry correction prompts to patch already-broken AI code.
 
-- Takeaway: If an LLM fails three times, context is poisoned—don't patch it, git reset --hard and prompt fresh.
+**Takeaway:** If an LLM fails three times, context is poisoned—don't patch it, git reset --hard and prompt fresh.
 
-**Skipping the Sandbox:** Tried to engineer complex 3D physics directly inside the production monorepo.
+- **Skipping the Sandbox:** Tried to engineer complex 3D physics directly inside the production monorepo.
 
-- **Takeaway:** Prove experimental math in a throwaway 100-line HTML file before integrating it into production.
+**Takeaway:** Prove experimental math in a throwaway 100-line HTML file before integrating it into production.
 
 ### My Response
 
@@ -79,12 +79,14 @@ Was I too involved, or is an AI simply incapable of evaluating 3D tactile UI thr
 You weren't micromanaging—AI fundamentally lacks physical intuition.\
 An AI excels at discrete logic, but cannot "feel" kinetic motion, easing curves, or spatial continuity.
 
-- **The "Blind Watchmaker" Trap:** Unit tests verify data...
-  - **Screenshots Aren't Kinetic:** Static Playwright captures...
-  - **Hands-Off UI Fails Fast:** Being completely hands-off...
-  - **The Winning Division of Labor:**
-    - **AI:** Plumbing, build pipelines, Rust backends...
-    - **Human:** "Director of Photography" for CSS transforms...
+- **The "Blind Watchmaker" Trap**: Unit tests verify data, not perception. A test can confirm a flap index changed from 3 to 4 while the element clips through its neighbor in the viewport.
+- **Screenshots Aren't Kinetic:** Static Playwright captures miss the point. They can't tell you if drag inertia feels sluggish, if an axle seems distorted, or if an animation snaps abruptly.
+- **Hands-Off UI Fails Fast:** Being completely hands-off wouldn't have fixed things—it just produces pristine, passing test suites for a visually broken UI.
+- **The Winning Division of Labour:**
+
+**AI:** Plumbing, build pipelines, Rust backends, and pure math state machines (gesture-model.ts).
+
+**Human:** "Director of Photography" for CSS transforms, animation feel, and visual QA.
 
 ## Conclusion
 
