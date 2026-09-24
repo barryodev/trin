@@ -10,9 +10,7 @@ test("homepage renders the primary navigation", async ({ page }) => {
 test("public navigation pages render", async ({ page }) => {
   await page.goto("/posts");
   await expect(page.getByRole("heading", { name: "Posts", level: 1 })).toBeVisible();
-  await expect(
-    page.locator('main a[href^="/posts/"]').first(),
-  ).toBeVisible();
+  await expect(page.locator('main a[href^="/posts/"]').first()).toBeVisible();
 
   await page.getByRole("link", { name: "Projects" }).click();
   await expect(page).toHaveURL(/\/projects$/);
@@ -21,7 +19,9 @@ test("public navigation pages render", async ({ page }) => {
 
   await page.getByRole("link", { name: "Playlists" }).click();
   await expect(page).toHaveURL(/\/playlists$/);
-  await expect(page.getByRole("heading", { name: "Playlists", level: 1 })).toBeVisible();
+  await expect(
+    page.getByRole("heading", { name: "Playlists", level: 1 }),
+  ).toBeVisible();
   await expect(page.locator('iframe[src*="open.spotify.com"]').first()).toBeVisible();
 });
 
