@@ -49,4 +49,10 @@ export const playlists: Playlist[] = [
     description: "This's nothing too high brow about this one, just pure bangers.",
     spotifyId: "0YpzENV0ctmbRKdy6zNPwZ",
   },
+  {
+    title: "Drill",
+    description:
+      "A collection of tunes that make me feel like there's a drill going through my skull. Sometimes in a good way, sometimes in a bad way.",
+    spotifyId: "5BfZbmP7FbiQm0ZGKAsf0h",
+  },
 ];

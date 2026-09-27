@@ -26,11 +26,11 @@ export default async function HomePage() {
 
   return (
     <div>
-      <p className="mb-6 max-w-2xl text-base leading-relaxed text-zinc-400 sm:text-lg">
-        {siteConfig.bio}
-      </p>
-
-      <hr className="mb-8 border-zinc-800" />
+      <div className="mb-8 rounded-xl bg-zinc-900 p-6">
+        <p className="text-base leading-relaxed text-zinc-400 sm:text-lg">
+          {siteConfig.bio}
+        </p>
+      </div>
 
       {summaries.length === 0 ? (
         <p className="text-zinc-500">No posts yet — check back soon.</p>

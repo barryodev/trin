@@ -10,13 +10,12 @@ export const metadata: Metadata = {
 export default function PlaylistsPage() {
   return (
     <div className="space-y-8">
-      <div className="space-y-2">
+      <div className="space-y-2 rounded-xl bg-zinc-900 p-6">
         <h1 className="text-2xl font-semibold tracking-tight text-zinc-100">
           Playlists
         </h1>
         <p className="text-zinc-400">
-          What I&apos;m listening to while I work — mostly instrumental, occasionally
-          not.
+          What I like to listen to, at different stages of life
         </p>
       </div>
       <div className="space-y-6">
