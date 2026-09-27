@@ -79,8 +79,8 @@ export default async function PostPage({ params }: Props) {
                     loop={!!props.autoPlay}
                     muted={!!props.autoPlay}
                     playsInline={!!props.autoPlay}
-                    className="rounded-lg border border-zinc-800"
-                    style={{ width, maxWidth: "100%" }}
+                    className="w-full max-w-full rounded-lg border border-zinc-800 sm:w-[var(--video-width)]"
+                    style={{ "--video-width": width } as React.CSSProperties}
                   />
                 </div>
               );
