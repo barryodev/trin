@@ -83,7 +83,8 @@ export default config({
                       loop={autoPlay}
                       muted={autoPlay}
                       playsInline={autoPlay}
-                      style={{ width, maxWidth: "100%", borderRadius: "0.5rem" }}
+                      className="w-full max-w-full rounded-lg sm:w-[var(--video-width)]"
+                      style={{ "--video-width": width } as React.CSSProperties}
                     />
                   </div>
                 ) : (
