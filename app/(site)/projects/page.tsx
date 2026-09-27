@@ -10,11 +10,11 @@ export const metadata: Metadata = {
 export default function ProjectsPage() {
   return (
     <div className="space-y-8">
-      <div className="space-y-2">
+      <div className="space-y-2 rounded-xl bg-zinc-900 p-6">
         <h1 className="text-2xl font-semibold tracking-tight text-zinc-100">
           Projects
         </h1>
-        <p className="text-zinc-400">A few things I&apos;ve built and maintained.</p>
+        <p className="text-zinc-400">A few things I&apos;ve built.</p>
       </div>
       <div className="grid gap-4 sm:grid-cols-2">
         {projects.map((project) => (

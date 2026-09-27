@@ -11,31 +11,31 @@ export default function SiteLayout({
   return (
     <div className="flex min-h-screen flex-col">
       <Image
-        src="/images/ui/left.webp"
+        src="/images/ui/twisted-dreams-left-banner.webp"
         alt=""
         aria-hidden="true"
-        width={720}
-        height={2912}
-        loading="eager"
-        className="pointer-events-none fixed top-0 left-[max(0px,calc(50%-46rem))] z-0 hidden h-auto w-64 opacity-50 xl:block"
+        width={682}
+        height={2047}
+        priority
+        className="pointer-events-none fixed top-0 left-[calc(50%-45.75rem)] z-0 hidden h-auto w-[21rem] min-[1150px]:block"
       />
       <Image
-        src="/images/ui/right.webp"
+        src="/images/ui/twisted-dreams-right-banner.webp"
         alt=""
         aria-hidden="true"
-        width={720}
-        height={2912}
-        loading="eager"
-        className="pointer-events-none fixed top-0 right-[max(0px,calc(50%-46rem))] z-0 hidden h-auto w-64 opacity-50 xl:block"
+        width={683}
+        height={2047}
+        priority
+        className="pointer-events-none fixed top-0 right-[calc(50%-45.75rem)] z-0 hidden h-auto w-[21rem] min-[1150px]:block"
       />
       <Image
-        src="/images/ui/mobile-bg.webp"
+        src="/images/ui/twistingdreams-mobile.webp"
         alt=""
         aria-hidden="true"
-        width={1440}
-        height={2912}
-        loading="eager"
-        className="pointer-events-none fixed top-[-12rem] left-1/2 z-0 h-auto w-[42rem] max-w-none -translate-x-1/2 opacity-15 sm:top-[-18rem] sm:w-[42rem] sm:opacity-10 xl:hidden"
+        width={1365}
+        height={2047}
+        priority
+        className="pointer-events-none fixed top-0 left-1/2 z-0 h-auto w-full max-w-[1150px] -translate-x-1/2 opacity-[55%] min-[1150px]:hidden"
       />
       <Header />
       <main className="relative z-10 flex-1 pt-6 pb-12 sm:pt-8 sm:pb-16">

@@ -35,7 +35,7 @@ export default async function PostsPage() {
 
   return (
     <div className="space-y-8">
-      <div className="space-y-2">
+      <div className="space-y-2 rounded-xl bg-zinc-900 p-6">
         <h1 className="text-2xl font-semibold tracking-tight text-zinc-100">Posts</h1>
         <p className="text-zinc-400">
           Notes on things I&apos;m building, breaking, and learning.
