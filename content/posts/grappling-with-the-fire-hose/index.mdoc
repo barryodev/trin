@@ -1,0 +1,42 @@
+---
+title: Grappling With the Fire Hose
+publishedDate: 2026-10-13
+excerpt: >-
+  A retrospective on my first two weeks using Linear to run the project
+  management of an AI generated app.
+---
+> The more miraculous a technology is, the more prone it is to catastrophic breakdown. — Neal Asher, *The Skinner*
+
+AI code generation is a fire hose of output. If you don’t learn how to constrain it, you’ll end up flooding your project with no clear ownership of the direction, architecture or code base of your application. I’ve personally experienced this last month working on a project called[ ChromaClacks](https://github.com/barryodev/chromaclack). It's a sentiment that's repeated by many devs in the industry who are adjusting to the new and powerful tools we've been given.
+
+My brother, who's a much more experienced dev than myself, suggested I try out[ Linear](https://linear.app/), a tool that allows you to build a structure for your project and the agents you're using within it. After watching a few videos on it, and having a quick tour of the UI, I decided to pick a more simple style of app to develop rather than ChromaClacks, which I'd previously run into so much trouble with.
+
+After some consideration I decided to build a workout tracker that would focus on a minimal number of clicks to record the different exercises in a workout along with their reps and weights. I came up with the name[ TapRep](https://taprep.barryodev.io/) as a straightforward description of the essence of the app. A couple taps let you record a rep set.
+
+Alongside adopting Linear for project management, I also completely changed my coding environment. I switched from using copilot inside VS Code, to using the Claude CLI tool. Also instead of allowing copilot to auto select a model, now I decided to always use the model Opus 5.5 on high effort, while still keeping VS Code open to perform code reviews and debugging.
+
+The goal was to ship an app in two weeks that would cover the basics of tracking one of my workouts, be less annoying than manually writing out the details in a note app, and allow me to share that workout over WhatsApp. I wanted the app to be easy to use on your phone, with one hand and while you might be a bit sweaty or worn out at the end of a workout. I have to admit I'm pretty chuffed with the results after two weeks.
+
+{% video
+   src="/videos/posts/grappling-with-the-fire-hose/Screencast From 2026-10-13 12-40-20.mp4"
+   autoPlay=true
+   width="40%" /%}
+
+A fair bit of time was put into the initial project scaffolding. I wanted to go for a much simpler tech stack than the previous Tauri/SvelteKit setup. I went with FastAPI + HTMX to give the same responsive user experience you achieve with SvelteKit or React, while also allowing for much tighter unit testing of the app without any mocking of the DOM. I also wanted to maintain zero infrastructure costs as this is a hobby app, so I decided to try an[ Oracle Cloud free tier ARM VM](https://www.oracle.com/europe/cloud/free/). The first task was jumping through hoops required to verify an Oracle account, which is reasonable considering how generous their free tier is. The next step was building bash scripts to provision a local VM and deploy the app from GitHub to that vm, and then to do the same with the production vm in the Oracle cloud. Any steps required outside of the shell were recorded in an ops/README.md file in the project repo.
+
+Opus 5.5 handled the infrastructure wiring with aplomb, which wasn't a surprise given it's well within the wheelhouse of AI coding agents. I did find Linear was particularly good during this early stage and kept me focused on the task at hand. Any new ideas that popped into my head would be recorded for a later phase, with a new issue that had a good description and any open decisions that were left till implementation time.
+
+The real value of Linear became obvious as I started to move into implementing the core functionality of exercise tracking. I was able to set out a brief before each issue, set acceptance criteria of 100% unit test coverage and manual testing of functionality through the app on my phone. Interestingly a few times either Opus or I would stray off topic and out of scope of the current issue, and each time, the other partner would catch it and either record it in Linear as a future consideration, or decide to drop it.
+
+Here’s a few lessons that have cropped up during the past two weeks:
+
+- **Enforce strict session lengths.** Use /clear and /compact inside the Claude CLI to reduce context bloat and token usage.
+- **Plan each task before kicking off code generation.** Use /plan and /goal when interacting with Claude. It gives a clear structure for the AI agent to work within.
+- **Scope and size estimate each issue.** Split any large issues into logical sub-issues if possible, otherwise define clear steps within it.
+- **Prototype in isolation.** This was learned from ChromaClacks. The colour palette and UI element styling were rapidly iterated on throwaway mockups and not in app.
+- **Remove emotional attachment to the AI agent.** If a session is not flowing well, take a step back and review what's wrong with my input rather than becoming frustrated and cursing at the AI agent.
+- **Use remote access.** I took the time to set up remote access from my phone, along with a Tailscale network, so I can SSH onto my home pc, or access the app during development on my phone, from another network. I can code now while walking the dog.&nbsp;
+
+I've noticed a profound improvement in the quality of the code being generated over the past two weeks while also being a much more satisfying experience. Now to be completely honest, I've changed too many things at once (new model, new CLI tool, new tracking tool, easier domain) from my previous few weeks to pinpoint the exact reason for this efficiency boost.&nbsp;
+
+As excited as I am to continue with Phase 2 of TapRep, I'm going to go back to ChromaClacks and spend a few days focusing purely on getting the hard math and css figured out on a standalone isolated CSS/HTML/JS page. I'll use exactly the same tool set as I've done here, with my main focus to see if I can achieve the same efficiency in coding a much harder problem with what I've learned here.
