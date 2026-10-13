@@ -11,6 +11,13 @@ export type Project = {
 // up another Keystatic collection.
 export const projects: Project[] = [
   {
+    title: "TapRep",
+    description: "A low-friction workout logger.",
+    href: "https://github.com/barryodev/taprep",
+    demoHref: "https://taprep.barryodev.io",
+    tags: ["Python", "FastAPI", "HTMX"],
+  },
+  {
     title: "ChromaClack",
     description: "In Progress: A toy app to allow users to explore colour theory.",
     href: "https://github.com/barryodev/chromaclack",
