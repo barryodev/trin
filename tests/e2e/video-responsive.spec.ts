@@ -12,7 +12,7 @@ test.describe("Video Responsive Sizing", () => {
     await expect(video).toBeVisible();
 
     const videoBoxMobile = await video.boundingBox();
-    const container = page.locator("article").first();
+    const container = page.locator("article .prose-post").first();
     const containerBoxMobile = await container.boundingBox();
 
     expect(videoBoxMobile).not.toBeNull();
