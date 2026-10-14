@@ -43,7 +43,7 @@ export default async function PostPage({ params }: Props) {
 
   return (
     <article className="space-y-8">
-      <header>
+      <header className="pt-16 pb-8 sm:pt-24 sm:pb-12">
         <h1 className="text-3xl font-semibold tracking-tight text-zinc-100 [text-shadow:0_2px_12px_rgb(0_0_0/0.8)] sm:text-4xl">
           {post.title}
         </h1>
