@@ -1,0 +1,37 @@
+---
+title: Tightening The Loop
+publishedDate: 2026-11-03
+excerpt: >-
+  Two weeks back on ChromaClack with the same tools I used for TapRep, and what
+  changed when I tightened the loop between planning, commits and code review.
+---
+> *If you want to find the truth, you have to be willing to dig for it. Usually, it's buried under layers of deception and misunderstanding. — Peter F. Hamilton, Judas Unchained*
+
+I left my last sprint on [TapRep](https://github.com/barryodev/taprep) with a lot of optimism about using Claude CLI, Opus 5.5 and Linear. But I felt I had changed too much at once to be sure it was a rock solid improvement in my process. So I decided to keep everything in the process the same, but go back to [ChromaClack](https://github.com/barryodev/chromaclack) and attempt what I'd failed to implement before. I spent about 8 days working on this, with a lot of time also dedicated to CV and interview prep, which is about the same time frame I spent on it a month ago. This would be a true test of whether the lessons learned and the process changes made were an improvement, and not just the result of working on a simpler problem.
+
+Based on the lessons learned from the previous sprints, these were the principles I applied.
+
+- **Simplify the platform**. Write the prototype in a pure JS/CSS/HTML implementation, only focused on getting the physics maths and the animation behaviour right.
+- **Keep the context small.** Use /clear in Claude CLI at the start of each issue. Spend time planning the implementation, save that plan to Linear as a checklist of commits. Before closing each session check if anything needs to be saved for the future.
+- **Don't trust generated tests.** The previous failed branches had hundreds of unit tests that were passing with full coverage, without providing any real value. Human checks of behaviour before every commit.
+- **Establish shared nomenclature.** In the previous iteration, the retrospective identified drift of the meaning of terms in the code and design docs. This impacted the accuracy of prompt writing and generated results. Create a [GLOSSARY.md](https://github.com/barryodev/chromaclack/blob/main/GLOSSARY.md) with all concepts and terms defined. Select terms that are easy to understand and don't clash with each other.
+- **Linear as the project memory.** Don't save project progress in GitHub PR descriptions or Claude memory. Linear is the single source of truth for project progress.
+- **Read every line of code before merge.** After behaviour is proved correct by manual checks in the browser and on phone, push to GitHub and use the PR system comments to highlight potential issues or reinforce good patterns.
+- **Set a tone where ideas get challenged.** I didn't want the LLM to act as a yes person and approve any suggestion I made. One of the core behaviours I saved to Claude's memory was to set ego aside and only focus on the end goal of easy to read code that implemented the planned feature. During the PR reviews, comments and changes were challenged, some accepted, some modified and some dropped.
+
+The first four days went well, with quick progress through the issues I'd outlined for this milestone in Linear, even if most of the process mistakes also happened in that stretch. But as I worked through those first few features, I started to feel the plan wasn't holding up to what I was learning, and with a day left in the sprint I took a step back and went through the remaining issues with Opus. Several were dropped as no longer relevant or as duplicates. The biggest casualty was the headline goal of a single clacker handling all three axes of movement. Once the flaps rested at a tilt, there was no way to combine them that didn't look wrong, so each gesture kept its own tab.
+
+I also wrote down something that had been true all along but never stated: the clacker is, above anything else, an input element. Its usability comes first, ahead of a 100% accurate physics simulation, and that quickly ruled out one of my own ideas, letting several flaps fall together in a bunch as it slows down. In hindsight the problem wasn't that my plan wasn't robust enough, but that I'd written it in too much detail before the prototype existed. The issues that mattered most came from testing, not from the plan. Next sprint I'll keep the backlog to one-line placeholders, write each issue up properly when it's next, and tackle the riskiest question early instead of leaving it until last.
+
+{% video
+   src="/videos/posts/tightening-the-loop/Screencast From 2026-11-03 22-44-59.mp4"
+   autoPlay=true
+   width="45%" /%}
+
+Within the 8 day window I gave myself, I was able to implement every behaviour and animation left in the plan after the review, and I really enjoyed the process. I've a solid grasp of the code having reviewed each commit, and found it very focused and efficient to use the PR comments to address any issues I found. Establishing the glossary and sticking to it was also vital, just like in any dev team, and it's something I'll prioritise for any future generative AI projects.
+
+Afterwards I ran the same meta-analysis as last time, but ironically this time with the same model that wrote the code. I'm really impressed with Opus 5.5's capabilities, and I trusted it more than Gemini Pro. The verdict was that most mistakes happened in the first four days, but by the end of the sprint, the corrections were about the feel of the app, not the process. My conclusion is I have greater confidence in this new process and toolset. I've repeated the success I had with TapRep on a harder problem, one I'd failed at before.
+
+Two mistakes stood out, one from each of us. Claude designed for reuse before a second use actually existed, planning for the spin mode to reuse the swipe's motion code. It was a bad fit, as the two behaviours have little in common, and I caught it during a code review. On my side, while working from my phone over Tailscale and tmux, I signed off on an issue without first performing the usual behaviour checklist. A follow-up issue to check it on desktop ended up finding problems that were common to both mobile and desktop. This really reinforced the principle of sticking to the loop of Plan >> Manual Test >> Commit >> Review >> Merge, regardless of how I'm feeding prompts to Claude.
+
+My plan is to finish ChromaClack by converting this prototype to production code in the SvelteKit/Tauri monorepo, along with unit tests designed as carefully as the physics and animation functions themselves. Then I'll use the clacker's movement to control the background colour, and allow it to work as an over-engineered colour picker. It will be a further test of my process to see how this port goes from pure JS/CSS/HTML to the much more complicated structure of the SvelteKit/Tauri app. It will also be a good test to see if that complexity is worth the ability to run the code as a desktop or mobile app, rather than just a cloud hosted web app.
